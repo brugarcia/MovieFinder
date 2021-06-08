@@ -32,7 +32,7 @@ const MoviesProvider = ({ children }) => {
 				dispatchMovies({ type: 'setMoviesList', payload: response })
 			})
 			.catch((error) => {
-				MoviesContext({ type: 'setMoviesListStatus', payload: 'error' })
+				dispatchMovies({ type: 'setMoviesListStatus', payload: 'error' })
                 console.log(error)
 			})
 	}, [])
