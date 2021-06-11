@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import MoviesContext from '../../contexts/MoviesContext';
+import movieImage from '../../utils/movieImage';
 
 // const initState = {
 // moviesList: []
@@ -14,9 +15,9 @@ const MovieList = () => {
 
   return (
     <>
-      {moviesList.results?.map(({ id, title }) => (
+      {moviesList.results?.map(({ id, poster_path: posterPath, title }) => (
         <div key={id}>
-          {title}
+          <img src={movieImage(posterPath)} alt={title} />
         </div>
       ))}
     </>

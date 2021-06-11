@@ -30,7 +30,7 @@ const MoviesProvider = ({ children }) => {
     dispatchMovies({ type: 'setMoviesListStatus', payload: 'loading' });
     fetchMoviesByQuery(name)
       .then((response) => {
-        setTimeout(() => dispatchMovies({ type: 'setMoviesList', payload: response }), 3000);
+        setTimeout(() => dispatchMovies({ type: 'setMoviesList', payload: response }), 1000);
       })
       .catch((error) => {
         dispatchMovies({ type: 'setMoviesListStatus', payload: 'error' });

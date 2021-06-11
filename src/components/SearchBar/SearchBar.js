@@ -1,41 +1,24 @@
-import React, { useContext, useState } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import StyledSearchBar from './StyledSearchBar';
 
-import MoviesContext from '../../contexts/MoviesContext';
+const SearchBar = ({
+  icon, onKeyDown,
+}) => (
+  <StyledSearchBar
+    type="text"
+    icon={icon}
+    onKeyDown={onKeyDown}
+  />
+);
 
-const initState = {
-  value: '',
+SearchBar.propTypes = {
+  icon: PropTypes.node,
+  onKeyDown: PropTypes.func.isRequired,
 };
 
-const SearchBar = () => {
-  const [state, setState] = useState(initState);
-  const {
-    loadMoviesList,
-    moviesList,
-  } = useContext(MoviesContext);
-
-  const handleChange = (event) => {
-    if (event.key === 'Enter') {
-      loadMoviesList(event.target.value);
-    }
-  };
-
-  return (
-    <StyledSearchBar>
-      <div>
-        <input placeholder="Pesquise seu filme..." type="text" onKeyDown={handleChange} value={state.value} onChange={(e) => setState(() => ({ value: e.target.value }))} />
-      </div>
-      {moviesList.results && (
-      <div>
-        Filmes encontrados:
-        {' '}
-        {moviesList.results.length}
-      </div>
-      )}
-    </StyledSearchBar>
-
-  );
+SearchBar.defaultProps = {
+  icon: null,
 };
 
 export default SearchBar;
