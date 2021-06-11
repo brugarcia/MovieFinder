@@ -1,5 +1,7 @@
 import React, {useContext, useState} from 'react'
 
+import StyledSearchBar from './StyledSearchBar'
+
 import MoviesContext from '../../contexts/MoviesContext'
 
 const initState = {
@@ -22,14 +24,15 @@ const SearchBar = () => {
 	  }
 
 	return (
-        <>
-            <div>
-                <input placeholder="Pesquise seu filme..." type="text" onKeyDown={handleChange} value={state.value} onChange={(e) => setState(() => ({value: e.target.value}))}/>
-            </div>
-            {moviesList.results && (
-                <div>Filmes encontrados: {moviesList.results.length}</div>
-            )}
-        </>
+        <StyledSearchBar>
+          <div>
+              <input placeholder="Pesquise seu filme..." type="text" onKeyDown={handleChange} value={state.value} onChange={(e) => setState(() => ({value: e.target.value}))}/>
+          </div>
+          {moviesList.results && (
+              <div>Filmes encontrados: {moviesList.results.length}</div>
+          )}
+        </StyledSearchBar>
+
 
 	)
 }
