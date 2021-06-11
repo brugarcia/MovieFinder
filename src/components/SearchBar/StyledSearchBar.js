@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledSearchBar = styled.div`
   margin: 20px 20px;
@@ -7,6 +7,6 @@ const StyledSearchBar = styled.div`
       color: red;
       width: 100%;
     }
-`
+`;
 
-export default StyledSearchBar
+export default StyledSearchBar;

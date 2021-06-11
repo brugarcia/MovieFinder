@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import StyledLoadingHandler from './StyledLoadingHandler'
+import StyledLoadingHandler from './StyledLoadingHandler';
 
 const LoadingHandler = ({
   children,
@@ -20,7 +20,7 @@ const LoadingHandler = ({
       <div className="message">{errorMessage}</div>
     )}
   </StyledLoadingHandler>
-)
+);
 
 LoadingHandler.propTypes = {
   children: PropTypes.oneOfType([
@@ -29,15 +29,13 @@ LoadingHandler.propTypes = {
   ]).isRequired,
   dataStatus: PropTypes.string,
   errorMessage: PropTypes.string,
-  hasData: PropTypes.bool,
   loadingMessage: PropTypes.string,
-  noDataMessage: PropTypes.string,
-}
+};
 
 LoadingHandler.defaultProps = {
   dataStatus: '',
   errorMessage: 'Erro ao carregar dados',
   loadingMessage: 'Carregando...',
-}
+};
 
-export default LoadingHandler
+export default LoadingHandler;

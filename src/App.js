@@ -1,17 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import { MoviesProvider } from './contexts/MoviesContext'
-import Routes from './Routes'
+import { MoviesProvider } from './contexts/MoviesContext';
+import Routes from './Routes';
 
+const App = () => (
+  <MoviesProvider>
+    <Routes />
+  </MoviesProvider>
+);
 
-
-const App = () => {
-
-  return (
-    <MoviesProvider>
-      <Routes />
-    </MoviesProvider>
-  )
-}
-
-export default App
+export default App;

@@ -1,3 +1,3 @@
-import MovieList from './MovieList.js'
+import MovieList from './MovieList';
 
-export default MovieList
+export default MovieList;

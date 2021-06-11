@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const MovieInfo = () => (
-	<>
-		<h1>MovieInfo</h1>
-	</>
-)
+  <>
+    <h1>MovieInfo</h1>
+  </>
+);
 
-export default MovieInfo
+export default MovieInfo;

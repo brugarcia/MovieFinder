@@ -26,9 +26,18 @@
   },
   "eslintConfig": {
     "extends": [
+      "airbnb",
+      "airbnb/hooks",
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "react/state-in-constructor": [
+        2,
+        "always"
+      ]
+    }
   },
   "browserslist": {
     "production": [
