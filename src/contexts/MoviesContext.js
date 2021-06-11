@@ -23,13 +23,14 @@ function reducer(state, action) {
 }
 
 const MoviesProvider = ({ children }) => {
-	const [state, dispatchMovies] = useReducer(reducer, initialState)
+  const [state, dispatchMovies] = useReducer(reducer, initialState)
+  console.log(state.moviesListStatus)
 
 	const loadMoviesList = useCallback((name) => {
 		dispatchMovies({ type: 'setMoviesListStatus', payload: 'loading' })
 		fetchMoviesByQuery(name)
 			.then((response) => {
-				dispatchMovies({ type: 'setMoviesList', payload: response })
+			  setTimeout(() => dispatchMovies({ type: 'setMoviesList', payload: response }), 3000)
 			})
 			.catch((error) => {
 				dispatchMovies({ type: 'setMoviesListStatus', payload: 'error' })
@@ -42,9 +43,9 @@ const MoviesProvider = ({ children }) => {
 	const providerValue = useMemo(() => ({
 			...state,
 			loadMoviesList,
-		}), 
+		}),
 		[
-			loadMoviesList, 
+			loadMoviesList,
 			state,
 		])
 	return (
