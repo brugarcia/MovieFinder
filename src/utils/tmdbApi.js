@@ -3,4 +3,4 @@ const tmdbApi = {
 	url: 'https://api.themoviedb.org/3/'
 };
 
-export default tmdbApi;
+export default tmdbApi

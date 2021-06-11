@@ -8,8 +8,8 @@ const initState = {
 
 
 const MovieList = () => {
-	const [state, setState] = useState(initState);
-    const { 
+	const [state, setState] = useState(initState)
+    const {
 		moviesList,
 	 } = useContext(MoviesContext)
 

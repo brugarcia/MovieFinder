@@ -11,7 +11,7 @@ const App = () => {
     <MoviesProvider>
       <Routes />
     </MoviesProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
