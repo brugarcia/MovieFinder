@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "jpoissonnier.vscode-styled-components",
+    "naumovs.color-highlight",
+  ]
+}

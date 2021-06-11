@@ -9,14 +9,14 @@ const initState = {
 
 const SearchBar = () => {
 	const [state, setState] = useState(initState);
-    const { 
+    const {
 		loadMoviesList,
 		moviesList,
 	 } = useContext(MoviesContext)
 
 
 	const handleChange = (event) => {
-		if (event.key === 'Enter') {
+    if (event.key === 'Enter') {
 		  loadMoviesList(event.target.value)
 		}
 	  }
