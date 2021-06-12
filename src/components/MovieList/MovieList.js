@@ -1,26 +1,24 @@
 import React, { useContext } from 'react';
 
-import MoviesContext from '../../contexts/MoviesContext';
-import movieImage from '../../utils/movieImage';
+import StyledMovieList from './StyledMovieList';
 
-// const initState = {
-// moviesList: []
-// }
+import MoviesContext from '../../contexts/MoviesContext';
+import MovieListItem from './MovieListItem';
+import StyledMovieListItem from './MovieListItem/StyledMovieListItem';
 
 const MovieList = () => {
-  // const [state, setState] = useState(initState)
   const {
     moviesList,
   } = useContext(MoviesContext);
 
   return (
-    <>
+    <StyledMovieListItem>
       {moviesList.results?.map(({ id, poster_path: posterPath, title }) => (
         <div key={id}>
-          <img src={movieImage(posterPath)} alt={title} />
+          <MovieListItem name={title} image={posterPath} />
         </div>
       ))}
-    </>
+    </StyledMovieListItem>
   );
 };
 
