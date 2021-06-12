@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useCallback, useMemo, useReducer } from 'react';
 
-import fetchMoviesByQuery from '../services/fetchMoviesByQuery';
+import fetchMoviesByQuery from '../services/moviesServices';
 
 const MoviesContext = React.createContext();
 

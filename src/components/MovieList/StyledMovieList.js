@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
-const StyledMovieList = styled.article`
+const StyledMovieList = styled.span`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 
-  max-height: unset;
-  padding-bottom: 40px;
 
-  overflow-y: hidden;
-  :hover {
-    overflow-y: overlay;
-  }
+  padding-bottom: 40px;
 `;
 
 export default StyledMovieList;
