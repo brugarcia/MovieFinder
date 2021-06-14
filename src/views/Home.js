@@ -9,7 +9,7 @@ import MoviesContext from '../contexts/MoviesContext';
 const Home = () => {
   const {
     loadMoviesList,
-    moviesListStatus,
+    status,
   } = useContext(MoviesContext);
 
   const searchMovies = (event) => {
@@ -26,7 +26,7 @@ const Home = () => {
         onKeyDown={searchMovies}
         placeholder="Buscar Filme"
       />
-      <LoadingHandler dataStatus={moviesListStatus}>
+      <LoadingHandler dataStatus={status}>
         <MovieList />
       </LoadingHandler>
 

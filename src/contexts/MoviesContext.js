@@ -1,23 +1,26 @@
 import PropTypes from 'prop-types';
 import React, { useCallback, useMemo, useReducer } from 'react';
 
-import fetchMoviesByQuery from '../services/moviesServices';
+import { fetchMovie, fetchMoviesByQuery } from '../services/moviesServices';
 
 const MoviesContext = React.createContext();
 
 const MoviesConsumer = MoviesContext.Consumer;
 
 const initialState = {
+  movie: {},
   moviesList: [],
-  moviesListStatus: '',
+  status: '',
 };
 
 function reducer(state, action) {
   switch (action.type) {
+    case 'setMovie':
+      return { ...state, movie: action.payload, status: 'loaded' };
     case 'setMoviesList':
-      return { ...state, moviesList: action.payload, moviesListStatus: 'loaded' };
-    case 'setMoviesListStatus':
-      return { ...state, moviesListStatus: action.payload };
+      return { ...state, moviesList: action.payload, status: 'loaded' };
+    case 'setStatus':
+      return { ...state, status: action.payload };
     default:
       throw new Error();
   }
@@ -26,14 +29,27 @@ function reducer(state, action) {
 const MoviesProvider = ({ children }) => {
   const [state, dispatchMovies] = useReducer(reducer, initialState);
 
+  const loadMovie = useCallback((movieId) => {
+    dispatchMovies({ type: 'setStatus', payload: 'loading' });
+    fetchMovie(movieId)
+      .then((response) => {
+        setTimeout(() => dispatchMovies({ type: 'setMovie', payload: response }), 1000);
+      })
+      .catch((error) => {
+        dispatchMovies({ type: 'setStatus', payload: 'error' });
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  }, []);
+
   const loadMoviesList = useCallback((name) => {
-    dispatchMovies({ type: 'setMoviesListStatus', payload: 'loading' });
+    dispatchMovies({ type: 'setStatus', payload: 'loading' });
     fetchMoviesByQuery(name)
       .then((response) => {
         setTimeout(() => dispatchMovies({ type: 'setMoviesList', payload: response }), 1000);
       })
       .catch((error) => {
-        dispatchMovies({ type: 'setMoviesListStatus', payload: 'error' });
+        dispatchMovies({ type: 'setStatus', payload: 'error' });
         // eslint-disable-next-line no-console
         console.log(error);
       });
@@ -41,9 +57,11 @@ const MoviesProvider = ({ children }) => {
 
   const providerValue = useMemo(() => ({
     ...state,
+    loadMovie,
     loadMoviesList,
   }),
   [
+    loadMovie,
     loadMoviesList,
     state,
   ]);
