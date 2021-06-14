@@ -12,18 +12,22 @@ const StyledMovieListItem = styled.a`
   padding-bottom: 16px;
 
   border-radius: 20px;
-  opacity: 0.8;
 
-  :hover {
-    opacity: 1;
+  :hover .movie-image {
+    opacity: 0.4;
   }
 
-  h2 {
+  :hover .movie-title {
+    display: block;
+  }
+
+  .movie-title {
     text-align: center;
-    position: static;
+    position: absolute;
     max-width: 180px;
-    font-size: 15px;
+    font-size: 20px;
     color: #e81d25;
+    display: none;
   }
 
 `;
