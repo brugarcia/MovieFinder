@@ -6,6 +6,7 @@ import movieImage from '../../../utils/movieImage';
 const MovieListItem = ({ name, image }) => (
   <StyledMovieListItem>
     <img src={movieImage({ imagePath: image, size: 200 })} alt={name} />
+    <h2>{name}</h2>
   </StyledMovieListItem>
 );
 
