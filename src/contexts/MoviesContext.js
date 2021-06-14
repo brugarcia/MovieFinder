@@ -7,18 +7,24 @@ const MoviesContext = React.createContext();
 
 const MoviesConsumer = MoviesContext.Consumer;
 
-const initialState = {
+const initState = {
   movie: {},
   moviesList: [],
   status: '',
+  isListOpen: false,
+  isDetailsOpen: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case 'setMovie':
-      return { ...state, movie: action.payload, status: 'loaded' };
+      return {
+        ...state, movie: action.payload, status: 'loaded', isListOpen: false, isDetailsOpen: true,
+      };
     case 'setMoviesList':
-      return { ...state, moviesList: action.payload, status: 'loaded' };
+      return {
+        ...state, moviesList: action.payload, status: 'loaded', isListOpen: true, isDetailsOpen: false,
+      };
     case 'setStatus':
       return { ...state, status: action.payload };
     default:
@@ -27,7 +33,7 @@ function reducer(state, action) {
 }
 
 const MoviesProvider = ({ children }) => {
-  const [state, dispatchMovies] = useReducer(reducer, initialState);
+  const [state, dispatchMovies] = useReducer(reducer, initState);
 
   const loadMovie = useCallback((movieId) => {
     dispatchMovies({ type: 'setStatus', payload: 'loading' });
@@ -54,6 +60,8 @@ const MoviesProvider = ({ children }) => {
         console.log(error);
       });
   }, []);
+
+  console.log(state);
 
   const providerValue = useMemo(() => ({
     ...state,

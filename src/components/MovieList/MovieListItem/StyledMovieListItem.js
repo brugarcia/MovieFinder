@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledMovieListItem = styled.a`
+const StyledMovieListItem = styled.button`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -18,7 +18,7 @@ const StyledMovieListItem = styled.a`
   }
 
   :hover .movie-title {
-    display: block;
+    display: inline;
   }
 
   .movie-title {

@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import StyledMovieListItem from './StyledMovieListItem';
 import movieImage from '../../../utils/movieImage';
 
-const MovieListItem = ({ movieId, name, image }) => (
-  <StyledMovieListItem>
-    <img src={movieImage({ imagePath: image, size: 200 })} alt={name} />
-    <h2>{name}</h2>
-  </StyledMovieListItem>
-);
+import MoviesContext from '../../../contexts/MoviesContext';
+
+const MovieListItem = ({ movieId, name, image }) => {
+  const {
+    loadMovie,
+  } = useContext(MoviesContext);
+
+  const handleLoadMovie = () => {
+    loadMovie(movieId);
+  };
+
+  return (
+    <StyledMovieListItem onClick={handleLoadMovie}>
+      <img className="movie-image" src={movieImage({ imagePath: image, size: 200 })} alt={name} />
+      <h2 className="movie-title">{name}</h2>
+    </StyledMovieListItem>
+  );
+};
 
 MovieListItem.propTypes = {
   movieId: PropTypes.number.isRequired,
