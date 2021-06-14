@@ -4,6 +4,9 @@ import SearchBar from '../components/SearchBar';
 import MovieList from '../components/MovieList';
 import MovieDetails from '../components/MovieDetails';
 import LoadingHandler from '../components/LoadingHandler';
+import Header from '../components/Header';
+import Main from '../components/Main';
+import Footer from '../components/Footer';
 
 import MoviesContext from '../contexts/MoviesContext';
 
@@ -23,20 +26,23 @@ const Home = () => {
 
   return (
     <>
-      <SearchBar
-        icon={SearchIcon}
-        onKeyDown={searchMovies}
-        placeholder="Buscar Filme"
-      />
-      <LoadingHandler dataStatus={status}>
-        {isListOpen && (
+      <Header text="MOVIE FINDER" />
+      <Main>
+        <SearchBar
+          icon={SearchIcon}
+          onKeyDown={searchMovies}
+          placeholder="Buscar Filme"
+        />
+        <LoadingHandler dataStatus={status}>
+          {isListOpen && (
           <MovieList />
-        )}
-        {isDetailsOpen && (
+          )}
+          {isDetailsOpen && (
           <MovieDetails />
-        )}
-      </LoadingHandler>
-
+          )}
+        </LoadingHandler>
+      </Main>
+      <Footer text={`${new Date().getFullYear()} - Bruno Fernandes`} />
     </>
   );
 };
