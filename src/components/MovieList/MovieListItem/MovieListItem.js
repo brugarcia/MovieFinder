@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import StyledMovieListItem from './StyledMovieListItem';
-import movieImage from '../../../utils/movieImage';
+import ImageWrapper from '../../ImageWrapper';
 
 import MoviesContext from '../../../contexts/MoviesContext';
 
@@ -16,7 +16,9 @@ const MovieListItem = ({ movieId, name, image }) => {
 
   return (
     <StyledMovieListItem onClick={handleLoadMovie}>
-      <img className="movie-image" src={movieImage({ imagePath: image, size: 200 })} alt={name} />
+      <div className="movie-image">
+        <ImageWrapper path={image} size={200} name={name} />
+      </div>
       <h2 className="movie-title">{name}</h2>
     </StyledMovieListItem>
   );
