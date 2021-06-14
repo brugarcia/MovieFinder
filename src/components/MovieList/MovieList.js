@@ -14,7 +14,7 @@ const MovieList = () => {
     <StyledMovieList>
       {moviesList.results?.map(({ id, poster_path: posterPath, title }) => (
         <div key={id}>
-          <MovieListItem name={title} image={posterPath} />
+          <MovieListItem name={title} movieId={id} image={posterPath} />
         </div>
       ))}
     </StyledMovieList>

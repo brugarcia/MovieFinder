@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import StyledMovieListItem from './StyledMovieListItem';
 import movieImage from '../../../utils/movieImage';
 
-const MovieListItem = ({ name, image }) => (
+const MovieListItem = ({ movieId, name, image }) => (
   <StyledMovieListItem>
     <img src={movieImage({ imagePath: image, size: 200 })} alt={name} />
     <h2>{name}</h2>
@@ -11,6 +11,7 @@ const MovieListItem = ({ name, image }) => (
 );
 
 MovieListItem.propTypes = {
+  movieId: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
 };
