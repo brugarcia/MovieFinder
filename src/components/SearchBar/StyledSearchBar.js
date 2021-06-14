@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
 const StyledSearchBar = styled.input`
-  background-color: #fff;
+  align-self: center;
   color: #e81d25;
   font-size: 16px;
   margin: 20px 20px;
   padding: 10px;
-  width: 100%;
+  width: 90%;
 
   border: 3px solid #e81d25;
   border-radius: 8px;
