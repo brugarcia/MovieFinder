@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledMovieDetails = styled.p`
+const StyledMovieDetails = styled.div`
   color: red;
 `;
 
